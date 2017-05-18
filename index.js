@@ -4,7 +4,7 @@ function WebpackEventPlugin(events) {
 
 WebpackEventPlugin.prototype.apply = function (compiler) {
     for (let event of this.events) {
-        compiler.plugin(event.hook, event.method);
+        compiler.plugin(event.hook, event.callback);
     }
 }
 
