@@ -8,13 +8,13 @@ npm install --save-dev webpack-event-plugin
 
 ## Usage
 ``` javascript
-var WebpackEventPlugin = require('webpack-event-plugin');
+const WebpackEventPlugin = require('webpack-event-plugin');
 
 // ...  
 plugins: [
   new WebpackEventPlugin([
     {
-      hook: 'after-emit',
+      hook: 'afterEmit',
       callback: (compilation) => {
         console.log('Files emitted!');
       }
@@ -25,4 +25,4 @@ plugins: [
 ```
 
 ## Available event hooks
-https://webpack.js.org/api/plugins/compiler/#event-hooks
+https://webpack.js.org/api/compiler-hooks/

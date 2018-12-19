@@ -1,10 +1,20 @@
-function WebpackEventPlugin(events) {
-    this.events = events;
-}
+class WebpackEventPlugin {
+    /**
+    * @constructor
+    * @param {object} events - Event hooks to run callbacks for
+    */
+    constructor(events) {
+        this.events = events;
+    }
 
-WebpackEventPlugin.prototype.apply = function (compiler) {
-    for (let event of this.events) {
-        compiler.plugin(event.hook, event.callback);
+    /**
+    * Apply plugin to webpack
+    * @param {object} compiler
+    */
+    apply(compiler) {
+        for (let event of this.events) {
+            compiler.hooks[event.hook].tap('Webpack Event Plugin', event.callback);
+        }
     }
 }
 
