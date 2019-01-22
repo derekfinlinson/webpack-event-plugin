@@ -13,7 +13,13 @@ class WebpackEventPlugin {
     */
     apply(compiler) {
         for (let event of this.events) {
-            compiler.hooks[event.hook].tap('Webpack Event Plugin', event.callback);
+            let hook = compiler.hooks[event.hook];
+            
+            if (hook != null) {
+                hook.tap('Webpack Event Plugin', event.callback);
+            } else {
+                console.log('No compiler hook ' + event.hook);
+            }
         }
     }
 }
